@@ -1,7 +1,7 @@
 namespace Template {
   export import ƒ = FudgeCore;
   export import ƒS = FudgeStory;
-
+  export let playerClass: String;
   console.log("FudgeStory template starting");
   //define transitions
   export let transition = {
@@ -11,6 +11,17 @@ namespace Template {
       edge: 1
     }
   };
+  export let playerData = {
+    Protagonist: {
+      name: "",
+      class: "",
+      origin: ƒS.ORIGIN.BOTTOMLEFT,
+      pose: {
+        talkingCorner: "Source/img/chars/Mark/Mark_Happy.png"
+      }
+    }
+  }
+
   //define sound
   export let sound = {
     //Musik
@@ -21,8 +32,20 @@ namespace Template {
   };
   export let locations = {
     city: {
-      name: "Sustown",
-      background: "Source/img/background/town.jpg"
+      name: "basictown",
+      background: "Source/img/background/basictown.jpg"
+    },
+    academyFront: {
+      name: "academy front",
+      background: "Source/img/background/academyFront.jpg"
+    },
+    aula: {
+      name: "academy Hall",
+      background: "Source/img/background/Aula.jpg"
+    },
+    academyPark: {
+      name: "academy park",
+      background: "Source/img/background/academyPark.jpg"
     }
   };
   //define characteres
@@ -30,18 +53,56 @@ namespace Template {
     Narrator: {
       name: ""
     },
+    Teacher: {
+      name: "lazy Sensei",
+      origin: ƒS.ORIGIN.BOTTOMRIGHT,
+      pose: {
+        normal: "Source/img/chars/Teacher.png"
+      }
+    },
+    Protagonist: {
+      
+      origin: ƒS.ORIGIN.BOTTOMLEFT,
+      pose: {
+        talkingCorner: "Source/img/chars/Mark/Mark_Happy.png"
+      }
+    },
     Natsu: {
       name: "Natsu",
       origin: ƒS.ORIGIN.BOTTOMRIGHT,
       pose: {
         normal: "Source/img/chars/Natsu.png",
-        smile: ""
+        smile: "",
+        angry: "Source/img/chars/Natsu_angry.png"
       }
     },
-    Protagonist: {
-      name: ""
+    Aoi: {
+      name: "Aoi",
+      origin: ƒS.ORIGIN.BOTTOMRIGHT,
+      pose: {
+        normal: "Source/img/chars/Aoi/Aoi_Smile.png",
+        smile: "Source/img/chars/Aoi/Aoi_Smile_2.png",
+        surprise: "Source/img/chars/Aoi/Aoi_Surprised.png",
+        blush_surprised: "Source/img/chars/Aoi/Aoi_Surprised_2.png",
+      }
+    },
+    Mark: {
+      name: "Mark",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+        normal: "Source/img/chars/Mark.png",
+        smile: "Source/img/chars/Mark_Smile.png"
+      }
+    },
+    Tensin: {
+      name: "Tensin",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+        normal: "Source/img/chars/Tensin.png",
+        smile: "Source/img/chars/Tensin_smile.png",
 
-    }
+      }
+    },
   };
   document.addEventListener("keydown", hndKeypress);
   async function hndKeypress(_event: KeyboardEvent): Promise<void> {
@@ -60,10 +121,11 @@ namespace Template {
   window.addEventListener("load", start);
   function start(_event: Event): void {
     let scenes: ƒS.Scenes = [
-      { scene: Text, name: "erstesteil" }
+      { scene: Scene, name: "ersterteil" }
     ];
 
     // start the sequence
+    ƒS.Progress.setData(playerData);
     ƒS.Progress.go(scenes);
   }
 }
