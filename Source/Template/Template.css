@@ -1,0 +1,11 @@
+scene {
+  width: 1280px;
+  height: 720px;
+  display: inline-block;
+}
+
+canvas {
+  width: 1280px;
+  height: 720px;
+  display: inline-block;
+}
