@@ -58,7 +58,6 @@
   "include": [
     "Fudge",
     "FudgeStory",
-    "Source",
-    "../Source"
+    "Source"
   ]
 }
